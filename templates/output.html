@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <title>Bank Loan Eligibility</title>
+    <style>
+        /* Global reset and body styles*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-image: url("static/download 3d.jpeg");
+            background-repeat: no-repeat;
+            height: 100vh; /* changed from 1000vh to 100vh */
+            display: flex;
+            background-position: center;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container style */
+        #cls {
+            color: rgb(80, 78, 77);
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background*/
+            padding: 20px; /* reduced padding from 100px to 20px */
+            margin: 20px; /* reduced margin from 100px to 20px */
+            border-radius: 10px; /* reduced border radius from 100px to 10px */
+            box-shadow: 10 10 100px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* reduced max-width from 6000px to 800px */
+            width: 80%; /* changed width from 1000% to 80% */
+        }
+
+        /* Form and heading style*/
+        #formm {
+            margin-top: 20px; /* reduced margin-top from 1000px to 20px */
+            margin-bottom: 10px;
+            background-color: transparent;
+            margin-left: 0; /* removed margin-left: 3000px */
+        }
+
+        #main_h {
+            color: rgb(44, 46, 43);
+            font-size: 24px; /* reduced font-size from 30px to 24px */
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgb(44, 46, 43);
+            margin-bottom: 20px;
+        }
+
+        #par {
+            font-size: 16px; /* reduced font-size from 18px to 16px */
+            color: rgb(44, 46, 43); /* Darker text color */
+            margin-bottom: 10px;
+        }
+
+        /* Input and button style*/
+        input[type="number"], select {
+            border: 2px solid rgb(44, 46, 43); /* darker the border */
+            border-radius: 8px; /* Rounded corners */
+            height: 30px; /* reduced height from 40px to 30px */
+            font-size: 16px;
+            padding: 0 12px; /* Padding inside the input */
+            width: calc(100% - 24px); /* Adjusted width */
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Light box-shadow */
+        }
+
+        /* button style */
+        #btn, #src {
+            border: none;
+            border-radius: 50px;
+            background-color: rgb(105, 104, 102);
+            width: calc(100% - 24px);
+            height: 30px; /* reduced height from 40px to 30px */
+            font-size: 16px;
+            color: whitesmoke;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #btn:hover, #src:hover {
+            background-color: rgb(125, 124, 122);
+        }
+
+        #pred {
+            margin-left: 10px;
+            color: rgb(19, 18, 18);
+            text-align: center;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            #cls {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cls">
+        <form action="{{ url_for('predict') }}" method="post" id="formm">
+            <h2 id="main_h">Enter the Details</h2><br><br>
+            <p id="par"><b>Enter the age</b></p>
+            <select name="Age" id="first" required="required">
+                    <option value="">Select the Age</option>
+                        <option value="67">67</option>
+                        <option value="66">66</option>
+                        <option value="65">65</option>
+                        <option value="64">64</option>
+                        <option value="63">63</option>
+                        <option value="62">62</option>
+                        <option value="61">61</option>
+                        <option value="60">60</option>
+                        <option value="59">59</option>
+                        <option value="58">58</option>
+                        <option value="57">57</option>
+                        <option value="56">56</option>
+                        <option value="55">55</option>
+                        <option value="54">54</option>
+                        <option value="53">53</option>
+                        <option value="52">52</option>
+                        <option value="51">51</option>
+                        <option value="50">50</option>
+                        <option value="49">49</option>
+                        <option value="48">48</option>
+                        <option value="47">47</option>
+                        <option value="46">46</option>
+                        <option value="45">45</option>
+                        <option value="44">44</option>
+                        <option value="43">43</option>
+                        <option value="42">42</option>
+                        <option value="41">41</option>
+                        <option value="40">40</option>
+                        <option value="39">39</option>
+                        <option value="38">38</option>
+                        <option value="37">37</option>
+                        <option value="36">36</option>
+                        <option value="35">35</option>
+                        <option value="34">34</option>
+                        <option value="33">33</option>
+                        <option value="32">32</option>
+                        <option value="31">31</option>
+                        <option value="30">30</option>
+                        <option value="29">29</option>
+                        <option value="28">28</option>
+                        <option value="27">27</option>
+                        <option value="26">26</option>
+                        <option value="25">25</option>
+                        <option value="24">24</option>
+                        <option value="23">23</option>
+                                        
+                </select>
+
+                <p id="par"><b>Select the Experience:</b></p>
+                <select name="Experience" id="second"  required="required">
+                    <option value="">Select the Experience</option>
+                    <option value="43">43</option>
+                    <option value="42">42</option>
+                    <option value="41">41</option>
+                    <option value="40">40</option>
+                    <option value="39">39</option>
+                    <option value="38">38</option>
+                    <option value="37">37</option>
+                    <option value="36">36</option>
+                    <option value="35">35</option>
+                    <option value="34">34</option>
+                    <option value="33">33</option>
+                    <option value="32">32</option>
+                    <option value="31">31</option>
+                    <option value="30">30</option>
+                    <option value="29">29</option>
+                    <option value="28">28</option>
+                    <option value="27">27</option>
+                    <option value="26">26</option>
+                    <option value="25">25</option>
+                    <option value="24">24</option>
+                    <option value="23">23</option>
+                    <option value="22">22</option>
+                    <option value="21">21</option>
+                    <option value="20">20</option>
+                    <option value="19">19</option>
+                    <option value="18">18</option>
+                    <option value="17">17</option>
+                    <option value="16">16</option>
+                    <option value="15">15</option>
+                    <option value="14">14</option>
+                    <option value="13">13</option>
+                    <option value="12">12</option>
+                    <option value="11">11</option>
+                    <option value="10">10</option>
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                    <option value="-1">-1</option>
+                    <option value="-2">-2</option>
+                    <option value="-3">-3</option>
+                    
+                </select>
+
+
+
+                <p id="par"><b>Enter your Income</b></p>
+                    <label for="Income"></label>
+                    <input type="number" id="Income" name="Income" min="0" placeholder="Enter your income">
+                </select>     
+                    
+                <p id="par"><b>Enter your family members</b></p>
+                    <label for="Family"></label>
+                    <input type="number" id="Family" name="Family" min="0" placeholder="Enter your number of family members">    
+                </select> 
+                
+                <p id="par"><b>Select the CCAvg</b></p>
+                <select name="CCAvg" id="fiveth" required="required">
+                    <option value="">Enter you have CCAvg or not:</option>
+                    <option value="0.">0.</option>
+                    <option value="0.1">0.1</option>
+                    <option value="0.2">0.2</option>
+                    <option value="0.3">0.3</option>
+                    <option value="0.4">0.4</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.67">0.67</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.75">0.75</option>
+                    <option value="0.8">0.8</option>
+                    <option value="0.9">0.9</option>
+                    <option value="1.">1.</option>
+                    <option value="1.1">1.1</option>
+                    <option value="1.2">1.2</option>
+                    <option value="1.3">1.3</option>
+                    <option value="1.33">1.33</option>
+                    <option value="1.4">1.4</option>
+                    <option value="1.5">1.5</option>
+                    <option value="1.6">1.6</option>
+                    <option value="1.67">1.67</option>
+                    <option value="1.7">1.7</option>
+                    <option value="1.75">1.75</option>
+                    <option value="1.8">1.8</option>
+                    <option value="1.9">1.9</option>
+                    <option value="2.">2.</option>
+                    <option value="2.1">2.1</option>
+                    <option value="2.2">2.2</option>
+                    <option value="2.3">2.3</option>
+                    <option value="2.33">2.33</option>
+                    <option value="2.4">2.4</option>
+                    <option value="2.5">2.5</option>
+                    <option value="2.6">2.6</option>
+                    <option value="2.67">2.67</option>
+                    <option value="2.7">2.7</option>
+                    <option value="2.75">2.75</option>
+                    <option value="2.8">2.8</option>
+                    <option value="2.9">2.9</option>
+                    <option value="3.">3.</option>
+                </select>
+
+                <p id="par"><b>Enter your Education Level:</b></p>
+                <select name="Education" id="eighth" required = "required">
+                    <option value="">Enter your Education Level:</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+
+                <p id="par"><b>Enter the Mortgage value</b></p>
+                    <label for="Mortgage"></label>
+                    <input type="number" id="Mortgage" name="Mortgage" min="0" placeholder="Enter the Mortgage">
+                </select>
+
+                <p id="par"><b>Have Personal Loan:</b></p>
+                <select name="Personal.Loan" id="eighth" required = "required">
+                    <option value="">Select, Have personal loan or not</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                
+                <p id="par"><b>Have Security Account:</b></p>
+                <select name="Securities.Account" id="nineth" required = "required">
+                    <option value="">Enter, Have Security Account or not:</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+                
+                <p id="par"><b>Have CD Account:</b></p>
+                <select name="CD.Account" id="tenth"  required="required">
+                    <option value="">Select the Experience</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+
+                <p id="par"><b>Means of Apply:</b></p>
+                <select name="Online" id="eleventh"  required="required">
+                    <option value="">Apply Online or Offline</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+
+
+                <button type = "submit" id="btn">CLICK ME</button>
+                <h3 id="pred">Loan Eligiblity Prediction is:-  {{ prediction_text }}</h3>  
+        </form>
+        
+    </div>
+</body>
+</html>
